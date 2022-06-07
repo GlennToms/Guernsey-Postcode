@@ -1,3 +1,4 @@
+from re import I
 import requests
 import string
 import asyncio
@@ -16,12 +17,14 @@ def geturl(postcode):
 
 
 def gen_postcode():
-    while True:
+    run = True
+    while run:
         for number_one in range(1, 11):
             for number_two in range(10):
                 for first_letter in string.ascii_uppercase:
                     for second_letter in string.ascii_uppercase:
                         yield f"GY{number_one} {number_two}{first_letter}{second_letter}"
+        run = False
 
 
 def write(name, data):
